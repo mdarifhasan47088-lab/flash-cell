@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Cell - Endless Runner</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            text-align: center;
+            border: 2px solid #00ffcc;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+        }
+        button {
+            background: #00ffcc;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px 0;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button:active {
+            background: #00b386;
+        }
+        .store-item {
+            background: #333;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <h1>Flash Cell</h1>
+        <p>Coins: <span id="coin-count">50</span></p>
+        
+        <button onclick="startGame()">Play Game</button>
+        <button onclick="openStore()">Coin Store</button>
+    </div>
+
+    <!-- Coin Store Modal -->
+    <div id="store-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
+        <div style="background:#222; padding:20px; border-radius:10px; width:300px; text-align:center;">
+            <h3>Flash Cell Store</h3>
+            <div class="store-item"><span>100 Coins</span> <button onclick="buyPack(1.1)">$1.1</button></div>
+            <div class="store-item"><span>220 Coins</span> <button onclick="buyPack(2.1)">$2.1</button></div>
+            <div class="store-item"><span>350 Coins</span> <button onclick="buyPack(3.1)">$3.1</button></div>
+            <div class="store-item"><span>500 Coins</span> <button onclick="buyPack(4.1)">$4.1</button></div>
+            <div class="store-item"><span>650 Coins</span> <button onclick="buyPack(5.1)">$5.1</button></div>
+            <div class="store-item"><span>850 Coins</span> <button onclick="buyPack(6.1)">$6.1</button></div>
+            <div class="store-item"><span>1500 Coins</span> <button onclick="buyPack(10.1)">$10.1</button></div>
+            <div class="store-item"><span>2500 Coins</span> <button onclick="buyPack(15.1)">$15.1</button></div>
+            <br>
+            <button onclick="closeStore()" style="background:#ff4444; color:#fff;">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let coins = 50;
+
+        function startGame() {
+            alert("Flash Cell গেম শুরু হচ্ছে! (এখানে গেমপ্লে চলবে)");
+        }
+
+        function openStore() {
+            document.getElementById('store-modal').style.display = 'flex';
+        }
+
+        function closeStore() {
+            document.getElementById('store-modal').style.display = 'none';
+        }
+
+        function buyPack(price) {
+            alert("Google Play Billing: $" + price + " এর প্যাকটি সফলভাবে কেনা হয়েছে!");
+            coins += 100;
+            document.getElementById('coin-count').innerText = coins;
+            closeStore();
+        }
+    </script>
+
+</body>
+</html>
